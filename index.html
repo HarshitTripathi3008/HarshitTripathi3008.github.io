@@ -1,61 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Harshit Tripathi | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #0f172a; color: #e5e7eb; }
-    header { padding: 40px; text-align: center; background: #020617; }
-    section { padding: 40px; max-width: 900px; margin: auto; }
-    h1, h2 { color: #38bdf8; }
-    .card { background: #020617; padding: 20px; margin: 15px 0; border-radius: 8px; }
-    a { color: #38bdf8; text-decoration: none; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Harshit Tripathi | Portfolio</title>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #020617;
+  --accent: #38bdf8;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+header {
+  padding: 80px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, #020617, var(--bg));
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+header p {
+  color: var(--muted);
+  margin: 10px 0;
+}
+
+header a {
+  margin: 0 10px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 20px;
+}
+
+h2 {
+  color: var(--accent);
+  margin-bottom: 25px;
+}
+
+.card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.project-title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-title a {
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.skills span {
+  display: inline-block;
+  padding: 8px 14px;
+  margin: 6px;
+  border-radius: 999px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  font-size: 0.85rem;
+}
+
+ul { padding-left: 20px; }
+
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #64748b;
+  border-top: 1px solid #1e293b;
+}
+
+/* Animations */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s ease forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
+
 <body>
 
-<header>
+<header class="fade">
   <h1>Harshit Tripathi</h1>
-  <p>Backend | Real-Time Systems | Blockchain</p>
+  <p>Backend · Real-Time Systems · Blockchain</p>
   <p>
-    <a href="https://github.com/HarshitTripathi3008">GitHub</a> |
-    <a href="https://www.linkedin.com/in/harshit-tripathi-474577259">LinkedIn</a>
+    <a href="https://github.com/HarshitTripathi3008" target="_blank">GitHub</a> |
+    <a href="https://www.linkedin.com/in/harshit-tripathi-474577259" target="_blank">LinkedIn</a> |
+    <a href="mailto:harshtripathi9559@gmail.com">Email</a>
   </p>
 </header>
 
-<section>
-  <h2>About Me</h2>
-  <p>
-    Computer Science Engineering student focused on backend, real-time, and distributed systems.
-    Experienced with Node.js, WebSockets, Redis, Docker, and blockchain-based applications.
-  </p>
+<section class="fade">
+<h2>About Me</h2>
+<p>
+Computer Science Engineering undergraduate (2022–2026) with hands-on experience in
+<strong>backend development, real-time systems, distributed architectures, and blockchain</strong>.
+Worked on production-level WebRTC, WebSocket, Redis, Docker, and NGINX-based systems,
+focusing on scalability, reliability, and clean system design.
+</p>
 </section>
 
-<section>
-  <h2>Projects</h2>
+<section class="fade">
+<h2>Experience</h2>
+<div class="card">
+  <h3>Software Intern — CINQUENETWORK Pvt. Ltd.</h3>
+  <p><em>May 2025 – September 2025</em></p>
+  <ul>
+    <li>Optimized WebRTC signaling using Node.js, Socket.IO, and Redis</li>
+    <li>Implemented Redis-based fault-tolerant session handling</li>
+    <li>Configured NGINX with SSL/TLS for secure WebSocket communication</li>
+    <li>Containerized backend services using Docker</li>
+    <li>Worked with multi-server production architectures</li>
+  </ul>
+</div>
+</section>
 
-  <div class="card">
+<section class="fade">
+<h2>Major Project</h2>
+<div class="card">
+  <div class="project-title">
     <h3>Blockchain-Based E-Voting System</h3>
-    <p>Secure and transparent voting system using blockchain principles.</p>
-    <a href="https://github.com/HarshitTripathi3008/Blockchain-Based-E-voting-system">View Project</a>
+    <a href="https://github.com/HarshitTripathi3008/Blockchain-Based-E-voting-system" target="_blank">
+      View Repository →
+    </a>
   </div>
+  <ul>
+    <li>Designed a secure and transparent e-voting platform using blockchain principles</li>
+    <li>Ensured immutability, tamper resistance, and vote verification</li>
+    <li>Eliminated single points of failure in traditional voting systems</li>
+  </ul>
+</div>
+</section>
 
-  <div class="card">
+<section class="fade">
+<h2>Projects</h2>
+
+<div class="card">
+  <div class="project-title">
     <h3>Real-Time Chat Server</h3>
-    <p>Scalable chat backend using Node.js, Socket.IO, Redis Pub/Sub, and NGINX.</p>
+    <a href="https://github.com/HarshitTripathi3008" target="_blank">View Repository →</a>
   </div>
+  <p>Node.js · Socket.IO · Redis · NGINX · SSL · PM2</p>
+  <ul>
+    <li>Horizontally scalable chat backend using Redis Pub/Sub</li>
+    <li>Multi-server architecture without sticky sessions</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="project-title">
+    <h3>Todo List API</h3>
+    <a href="https://github.com/HarshitTripathi3008" target="_blank">View Repository →</a>
+  </div>
+  <p>Node.js · Express.js · MongoDB · NGINX</p>
+  <ul>
+    <li>RESTful CRUD APIs with secure deployment</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="project-title">
+    <h3>Railway Reservation System</h3>
+    <a href="https://github.com/HarshitTripathi3008" target="_blank">View Repository →</a>
+  </div>
+  <p>HTML · CSS · JavaScript · Node.js · MySQL</p>
+  <ul>
+    <li>Backend logic for bookings, schedules, and admin workflows</li>
+  </ul>
+</div>
+
 </section>
 
-<section>
-  <h2>Skills</h2>
-  <p>Node.js, Express, WebSockets, Redis, MongoDB, MySQL, Docker, NGINX, Blockchain</p>
+<section class="fade">
+<h2>Skills</h2>
+<div class="skills">
+<span>Node.js</span><span>Express.js</span><span>WebSockets</span>
+<span>Socket.IO</span><span>Redis</span><span>MongoDB</span>
+<span>MySQL</span><span>Docker</span><span>NGINX</span>
+<span>SSL/TLS</span><span>Blockchain</span><span>WebRTC</span>
+<span>C</span><span>C++</span><span>JavaScript</span>
+</div>
 </section>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: harshtripathi9559@gmail.com</p>
-</section>
+<footer>
+© 2025 Harshit Tripathi · Backend & Distributed Systems
+</footer>
 
 </body>
 </html>
+
