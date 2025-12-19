@@ -1,261 +1,1048 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harshit Tripathi | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harshit Tripathi - Backend Developer specializing in Real-Time Systems and Blockchain. Portfolio showcasing projects, skills, and experience.">
+    <meta name="keywords" content="Harshit Tripathi, Backend Developer, Node.js, WebRTC, Blockchain, Software Engineer">
+    <meta name="author" content="Harshit Tripathi">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Harshit Tripathi | Backend Developer">
+    <meta property="og:description" content="Backend Developer specializing in Real-Time Systems and Blockchain">
+    <meta property="og:type" content="website">
+    
+    <title>Harshit Tripathi | Backend Developer Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #020617;
+            --bg-card: #1e293b;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #0ea5e9;
+            --text-primary: #e5e7eb;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
 
-<style>
-:root {
-  --bg: #0f172a;
-  --card: #020617;
-  --accent: #38bdf8;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-* { box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-header {
-  padding: 80px 20px;
-  text-align: center;
-  background: radial-gradient(circle at top, #020617, var(--bg));
-}
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-header h1 {
-  font-size: 3rem;
-  margin: 0;
-}
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-header p {
-  color: var(--muted);
-  margin: 8px 0;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-header a {
-  color: var(--accent);
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: 500;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 65px 20px;
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-h2 {
-  color: var(--accent);
-  margin-bottom: 22px;
-}
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-.card {
-  background: var(--card);
-  padding: 25px;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
 
-.project-title {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
 
-.project-title a {
-  color: var(--accent);
-  font-size: 0.9rem;
-}
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-.skills span {
-  display: inline-block;
-  padding: 8px 14px;
-  margin: 6px;
-  border-radius: 999px;
-  background: #020617;
-  border: 1px solid #1e293b;
-  font-size: 0.85rem;
-}
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-ul { padding-left: 20px; }
+        /* Hero Section */
+        header {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, var(--bg-secondary), var(--bg-primary));
+            position: relative;
+            overflow: hidden;
+        }
 
-footer {
-  text-align: center;
-  padding: 35px;
-  color: #64748b;
-  border-top: 1px solid #1e293b;
-}
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
 
-/* Animations */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.9s ease forwards;
-}
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
 
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
+        .hero-content .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-content .location {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-primary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--accent-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), transparent);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .card .meta a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .card .meta a:hover {
+            text-decoration: underline;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.2);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), transparent);
+        }
+
+        .project-header h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .project-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-body li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .project-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .project-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .project-footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-footer a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item .icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                display: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 60px 15px;
+            }
+
+            #backToTop {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, #backToTop, .social-links, .cta-buttons {
+                display: none;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">HT</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
 
-<header class="fade">
-  <h1>Harshit Tripathi</h1>
-  <p>Backend · Real-Time Systems · Blockchain</p>
-  <p>Prayagraj, Uttar Pradesh, India · +91-7905002968</p>
-  <p>
-    <a href="mailto:harshtripathi9559@gmail.com">Email</a> |
-    <a href="https://www.linkedin.com/in/harshit-tripathi-474577259" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/HarshitTripathi3008" target="_blank">GitHub</a>
-  </p>
-</header>
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="hero-content">
+            <h1>Harshit Tripathi</h1>
+            <p class="tagline">Backend Developer · Real-Time Systems · Blockchain</p>
+            <p class="location">📍 Prayagraj, Uttar Pradesh, India · 📞 +91-7905002968</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+            <div class="social-links">
+                <a href="mailto:harshtripathi9559@gmail.com" aria-label="Email" title="Email">✉</a>
+                <a href="https://www.linkedin.com/in/harshit-tripathi-474577259" target="_blank" aria-label="LinkedIn" title="LinkedIn">🔗</a>
+                <a href="https://github.com/HarshitTripathi3008" target="_blank" aria-label="GitHub" title="GitHub">💻</a>
+            </div>
+        </div>
+    </header>
 
-<section class="fade">
-<h2>Education</h2>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card">
+            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+                I'm a passionate Backend Developer specializing in building scalable real-time systems and blockchain applications. 
+                With expertise in Node.js, WebRTC, and distributed systems, I focus on creating robust, secure, and high-performance 
+                solutions. Currently pursuing my B.Tech in Computer Science, I'm dedicated to continuous learning and solving 
+                complex technical challenges.
+            </p>
+        </div>
 
-<div class="card">
-  <strong>B.Tech, Computer Science and Engineering</strong><br>
-  Institute of Engineering and Rural Technology, AKTU<br>
-  <em>Nov 2022 – Jul 2026</em>
-</div>
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">Problems Solved</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Technologies</div>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-  <strong>Intermediate</strong>, Gujarat Public School<br>
-  <em>Apr 2021 – Jul 2022</em>
-</div>
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Software Intern</h3>
+            <div class="meta">
+                <span>CINQUENETWORK Pvt. Ltd.</span>
+                <span>•</span>
+                <span>May 2025 – September 2025</span>
+                <span>•</span>
+                <a href="https://cinquenetwork.odoo.com/home" target="_blank">Company Website →</a>
+            </div>
+            <ul>
+                <li>Improved WebRTC connection reliability by optimizing signaling servers using Node.js, Socket.IO, and Redis</li>
+                <li>Configured NGINX with SSL/TLS for secure WebSocket (WSS) communication</li>
+                <li>Implemented fault-tolerant session handling using Redis for distributed systems</li>
+                <li>Containerized backend services using Docker for scalable deployment across environments</li>
+            </ul>
+        </div>
+    </section>
 
-<div class="card">
-  <strong>High School</strong>, Gujarat Public School<br>
-  <em>Apr 2019 – Jun 2020</em>
-</div>
-</section>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">C</div>
+            <div class="skill-tag">C++</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">HTML</div>
+            <div class="skill-tag">CSS</div>
+            <div class="skill-tag">Node.js</div>
+            <div class="skill-tag">Express.js</div>
+            <div class="skill-tag">Socket.IO</div>
+            <div class="skill-tag">MongoDB</div>
+            <div class="skill-tag">MySQL</div>
+            <div class="skill-tag">Redis</div>
+            <div class="skill-tag">NGINX</div>
+            <div class="skill-tag">SSL/TLS</div>
+            <div class="skill-tag">PM2</div>
+            <div class="skill-tag">Docker</div>
+            <div class="skill-tag">AWS</div>
+            <div class="skill-tag">Data Structures</div>
+            <div class="skill-tag">Algorithms</div>
+            <div class="skill-tag">OOP</div>
+        </div>
+    </section>
 
-<section class="fade">
-<h2>Experience</h2>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        
+        <!-- Major Project -->
+        <div style="margin-bottom: 4rem;">
+            <h3 style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.2rem;">🌟 Major Project</h3>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Blockchain-Based E-Voting System</h3>
+                    <p class="project-tech">Blockchain · Secure Systems · Distributed Architecture</p>
+                </div>
+                <div class="project-body">
+                    <ul>
+                        <li>Designed a secure and transparent electronic voting system using blockchain principles</li>
+                        <li>Ensured immutability, tamper resistance, and vote verifiability through cryptographic techniques</li>
+                        <li>Improved trust, security, and auditability in digital elections with distributed consensus</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/HarshitTripathi3008/Blockchain-Based-E-voting-system" target="_blank">
+                        View Repository →
+                    </a>
+                </div>
+            </div>
+        </div>
 
-<div class="card">
-  <h3>Software Intern — CINQUENETWORK Pvt. Ltd.</h3>
-  <p>
-    <em>May 2025 – September 2025</em> ·
-    <a href="https://cinquenetwork.odoo.com/home" target="_blank">Company Website</a>
-  </p>
-  <ul>
-    <li>Improved WebRTC connection reliability by optimizing signaling servers using Node.js, Socket.IO, and Redis</li>
-    <li>Configured NGINX with SSL/TLS for secure WebSocket (WSS) communication</li>
-    <li>Implemented fault-tolerant session handling using Redis</li>
-    <li>Containerized backend services using Docker for scalable deployment</li>
-  </ul>
-</div>
-</section>
+        <!-- Other Projects -->
+        <h3 style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.2rem;">Other Projects</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Real-Time Chat Server</h3>
+                    <p class="project-tech">Socket.IO · Node.js · Redis · NGINX · SSL · PM2</p>
+                </div>
+                <div class="project-body">
+                    <ul>
+                        <li>Developed distributed and scalable chat backend using Redis Pub/Sub</li>
+                        <li>Deployed behind NGINX reverse proxy with SSL for secure communication</li>
+                        <li>Implemented real-time messaging with horizontal scalability</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/HarshitTripathi3008/chat_website" target="_blank">
+                        View Repository →
+                    </a>
+                </div>
+            </div>
 
-<section class="fade">
-<h2>Skills</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Todo List Application</h3>
+                    <p class="project-tech">Node.js · Express.js · MongoDB · NGINX</p>
+                </div>
+                <div class="project-body">
+                    <ul>
+                        <li>Built RESTful CRUD APIs with MongoDB integration</li>
+                        <li>Secured deployment using SSL and PM2 process manager</li>
+                        <li>Implemented user authentication and data validation</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/HarshitTripathi3008/node-mongodb-todo" target="_blank">
+                        View Repository →
+                    </a>
+                </div>
+            </div>
 
-<div class="skills">
-  <span>C</span><span>C++</span><span>JavaScript</span>
-  <span>HTML</span><span>CSS</span>
-  <span>Node.js</span><span>Express.js</span><span>Socket.IO</span>
-  <span>MongoDB</span><span>MySQL</span><span>Redis</span>
-  <span>NGINX</span><span>SSL/TLS</span><span>PM2</span>
-  <span>Docker</span><span>AWS</span>
-  <span>Data Structures</span><span>Algorithms</span><span>OOP</span>
-</div>
-</section>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Railway Reservation System</h3>
+                    <p class="project-tech">HTML · CSS · JavaScript · Node.js · MySQL</p>
+                </div>
+                <div class="project-body">
+                    <ul>
+                        <li>Responsive UI with real-time form validation</li>
+                        <li>Backend booking, scheduling, and admin features</li>
+                        <li>Database design for complex reservation logic</li>
+                    </ul>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/HarshitTripathi3008/Railway-reservation-system" target="_blank">
+                        View Repository →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="fade">
-<h2>Major Project</h2>
+    <!-- Education Section -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="card">
+            <h3>B.Tech in Computer Science and Engineering</h3>
+            <div class="meta">
+                <span>Institute of Engineering and Rural Technology, AKTU</span>
+                <span>•</span>
+                <span>Nov 2022 – Jul 2026</span>
+            </div>
+        </div>
 
-<div class="card">
-  <div class="project-title">
-    <h3>Blockchain-Based E-Voting System</h3>
-    <a href="https://github.com/HarshitTripathi3008/Blockchain-Based-E-voting-system" target="_blank">
-      View Repo →
-    </a>
-  </div>
-  <p>Blockchain · Secure Systems · Distributed Architecture</p>
-  <ul>
-    <li>Designed a secure and transparent electronic voting system using blockchain principles</li>
-    <li>Ensured immutability, tamper resistance, and vote verifiability</li>
-    <li>Improved trust, security, and auditability in digital elections</li>
-  </ul>
-</div>
-</section>
+        <div class="card">
+            <h3>Intermediate</h3>
+            <div class="meta">
+                <span>Gujarat Public School</span>
+                <span>•</span>
+                <span>Apr 2021 – Jul 2022</span>
+            </div>
+        </div>
 
-<section class="fade">
-<h2>Projects</h2>
+        <div class="card">
+            <h3>High School</h3>
+            <div class="meta">
+                <span>Gujarat Public School</span>
+                <span>•</span>
+                <span>Apr 2019 – Jun 2020</span>
+            </div>
+        </div>
 
-<div class="card">
-  <div class="project-title">
-    <h3>Real-Time Chat Server</h3>
-    <a href="https://github.com/HarshitTripathi3008/chat_website" target="_blank">
-      View Repo →
-    </a>
-  </div>
-  <p>Socket.IO · Node.js · Redis · NGINX · SSL · PM2</p>
-  <ul>
-    <li>Developed a distributed and scalable chat backend using Redis Pub/Sub</li>
-    <li>Deployed behind NGINX reverse proxy with SSL</li>
-  </ul>
-</div>
+        <!-- Coursework & Achievements -->
+        <div class="card" style="margin-top: 3rem;">
+            <h3>Coursework & Achievements</h3>
+            <ul style="margin-top: 1rem;">
+                <li>Core subjects: Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, Software Engineering, Computer Architecture</li>
+                <li>Solved 250+ algorithmic problems on LeetCode, GeeksforGeeks, and Coding Ninjas</li>
+            </ul>
+        </div>
+    </section>
 
-<div class="card">
-  <div class="project-title">
-    <h3>Todo List Application</h3>
-    <a href="https://github.com/HarshitTripathi3008/node-mongodb-todo" target="_blank">
-      View Repo →
-    </a>
-  </div>
-  <p>Node.js · Express.js · MongoDB · NGINX</p>
-  <ul>
-    <li>Built RESTful CRUD APIs with MongoDB integration</li>
-    <li>Secured deployment using SSL and PM2</li>
-  </ul>
-</div>
+    <!-- Contact Section -->
+    <section>
+        <div class="contact-info">
+        <div class="contact-item">
+            <div class="icon">✉</div>
+            <a href="mailto:harshtripathi9559@gmail.com">harshtripathi9559@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <div class="icon">📞</div>
+            <a href="tel:+917905002968">+91-7905002968</a>
+        </div>
+        <div class="contact-item">
+            <div class="icon">🔗</div>
+            <a href="https://www.linkedin.com/in/harshit-tripathi-474577259" target="_blank">LinkedIn Profile</a>
+        </div>
+        <div class="contact-item">
+            <div class="icon">💻</div>
+            <a href="https://github.com/HarshitTripathi3008" target="_blank">GitHub Profile</a>
+        </div>
+        <div class="contact-item">
+            <div class="icon">🧠</div>
+            <a href="https://leetcode.com/u/HarshitTripathi3008/" target="_blank">LeetCode Profile</a>
+        </div>
+        <div class="contact-item">
+            <div class="icon">📘</div>
+            <a href="https://www.geeksforgeeks.org/profile/harshtriphrj4" target="_blank">GeeksforGeeks Profile</a>
+        </div>
+        <div class="contact-item">
+            <div class="icon">📊</div>
+            <a href="https://www.naukri.com/code360/profile/fe256da4-d045-4f1c-a1ff-8746dea58eab" target="_blank">Naukri Code360 Profile</a>
+        </div>
+    </div>
 
-<div class="card">
-  <div class="project-title">
-    <h3>Railway Reservation System</h3>
-    <a href="https://github.com/HarshitTripathi3008/Railway-reservation-system" target="_blank">
-      View Repo →
-    </a>
-  </div>
-  <p>HTML · CSS · JavaScript · Node.js · MySQL</p>
-  <ul>
-    <li>Responsive UI with real-time validation</li>
-    <li>Backend booking, scheduling, and admin features</li>
-  </ul>
-</div>
+    </section>
 
-</section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Harshit Tripathi. All rights reserved.</p>
+        <p style="font-size: 0.9rem;">Built with passion for technology and innovation</p>
+    </footer>
 
-<section class="fade">
-<h2>Coursework & Achievements</h2>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
-<div class="card">
-  <ul>
-    <li>Core subjects: DSA, OS, DBMS, Computer Networks, Software Engineering, Computer Architecture</li>
-    <li>Solved 250+ algorithmic problems on LeetCode, GeeksforGeeks, and Coding Ninjas</li>
-  </ul>
-</div>
-</section>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
 
-<footer>
-© 2025 Harshit Tripathi · Backend & Real-Time Systems
-</footer>
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
 
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Height of fixed navbar
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('section, .card, .project-card, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.style.color = '';
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.style.color = 'var(--accent-primary)';
+                }
+            });
+        });
+
+        // Prevent right-click (optional - for protecting content)
+        // document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // Console message
+        console.log('%c👋 Hello Developer!', 'font-size: 20px; color: #38bdf8; font-weight: bold;');
+        console.log('%cInterested in the code? Visit my GitHub!', 'font-size: 14px; color: #94a3b8;');
+        console.log('%chttps://github.com/HarshitTripathi3008', 'font-size: 12px; color: #0ea5e9;');
+    </script>
 </body>
 </html>
-
