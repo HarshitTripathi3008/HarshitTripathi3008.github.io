@@ -13,631 +13,16 @@
     <meta property="og:type" content="website">
     
     <title>Harshit Tripathi | Backend Developer Portfolio</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
     
-    <style>
-        :root {
-            --primary-color: #38bdf8;
-            --secondary-color: #0ea5e9;
-            --bg-dark: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-light: #e5e7eb;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --success: #10b981;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        header {
-            padding: 120px 20px 80px;
-            text-align: center;
-            background: var(--bg-dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-content .tagline {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero-content .location {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(56, 189, 248, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Sections */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        section h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), transparent);
-            border-radius: 2px;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none; /* 🔥 FIX */
-        }
-
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card h3 {
-            color: var(--text-light);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card .meta {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .card .meta a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .card .meta a:hover {
-            text-decoration: underline;
-        }
-
-        .card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .card ul li {
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .card ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-
-        /* Profiles Grid */
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .profile-card {
-            background: var(--bg-dark);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3);
-        }
-
-        .profile-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .profile-card h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-card .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-tag {
-            background: var(--bg-secondary);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .skill-tag:hover {
-            border-color: var(--primary-color);
-            background: rgba(56, 189, 248, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
-        }
-
-        /* Project Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.3);
-        }
-
-        .project-header {
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), transparent);
-        }
-
-        .project-header h3 {
-            color: var(--text-light);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-tech {
-            color: var(--primary-color);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .project-body {
-            padding: 1.5rem 2rem;
-        }
-
-        .project-body ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .project-body li {
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .project-body li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: bold;
-        }
-
-        .project-footer {
-            padding: 1.5rem 2rem;
-            border-top: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
-        .project-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-
-        .project-footer a:hover {
-            gap: 0.75rem;
-        }
-
-        /* Stats Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item .icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(56, 189, 248, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover .icon {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .contact-item a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
-        footer p {
-            margin-bottom: 1rem;
-        }
-
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-        }
-
-        #backToTop:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-secondary);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                display: none;
-                border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            #backToTop {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            nav, #backToTop, .cta-buttons {
-                display: none;
-            }
-            
-            body {
-                background: white;
-                color: black;
-            }
-        }
-    </style>
+    <!-- Google Fonts: Space Grotesk and Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -671,29 +56,29 @@
     </header>
 
     <!-- Coding Profiles Section -->
-    <section id="profiles" style="background: var(--bg-secondary); padding: 60px 20px;">
+    <section id="profiles">
         <h2>Coding Profiles</h2>
         <div class="profiles-grid">
             <div class="profile-card">
-                <div class="profile-icon">💻</div>
+                <div class="profile-icon"><span class="material-symbols-outlined" style="font-size: 3rem;">code_blocks</span></div>
                 <h3>GitHub</h3>
                 <p>Open source contributions and projects</p>
                 <a href="https://github.com/HarshitTripathi3008" target="_blank" class="btn btn-secondary">Visit Profile →</a>
             </div>
             <div class="profile-card">
-                <div class="profile-icon">🧠</div>
+                <div class="profile-icon"><span class="material-symbols-outlined" style="font-size: 3rem;">psychology</span></div>
                 <h3>LeetCode</h3>
                 <p>Algorithmic problem solving</p>
                 <a href="https://leetcode.com/u/HarshitTripathi3008/" target="_blank" class="btn btn-secondary">Visit Profile →</a>
             </div>
             <div class="profile-card">
-                <div class="profile-icon">⚡</div>
+                <div class="profile-icon"><span class="material-symbols-outlined" style="font-size: 3rem;">terminal</span></div>
                 <h3>GeeksforGeeks</h3>
                 <p>Competitive programming practice</p>
                 <a href="https://www.geeksforgeeks.org/profile/harshtriphrj4" target="_blank" class="btn btn-secondary">Visit Profile →</a>
             </div>
             <div class="profile-card">
-                <div class="profile-icon">🚀</div>
+                <div class="profile-icon"><span class="material-symbols-outlined" style="font-size: 3rem;">rocket_launch</span></div>
                 <h3>Naukri Code360</h3>
                 <p>Coding challenges and contests</p>
                 <a href="https://www.naukri.com/code360/profile/fe256da4-d045-4f1c-a1ff-8746dea58eab" target="_blank" class="btn btn-secondary">Visit Profile →</a>
@@ -706,10 +91,10 @@
         <h2>About Me</h2>
         <div class="card">
             <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
-                I'm a passionate Backend Developer specializing in building scalable real-time systems and blockchain applications. 
-                With expertise in Node.js, WebRTC, and distributed systems, I focus on creating robust, secure, and high-performance 
-                solutions. Currently pursuing my B.Tech in Computer Science, I'm dedicated to continuous learning and solving 
-                complex technical challenges.
+                Computer Science undergraduate with hands-on experience in Backend development, backend architecture, and cloud infrastructure. 
+                Delivered scalable real-time communication systems with high reliability. Proficient in microservices architecture, distributed 
+                systems, WebRTC signaling, and containerization. Experienced in agile development methodologies and DevOps practices for 
+                production-grade applications.
             </p>
         </div>
 
@@ -733,62 +118,111 @@
    
     <!-- Experience Section -->
     <section id="experience">
-        <h2>Experience</h2>
+        <h2>Professional Experience</h2>
     
         <div class="card fade-in">
-            <h3>Software Intern</h3>
+            <h3>Software Development Intern</h3>
     
             <div class="meta">
-                <span>CINQUENETWORK Pvt. Ltd.</span>
-                <span>May 2025 – September 2025</span>
+                <span>CINQUENETWORK PRIVATE LIMITED</span>
+                <span>May 2025 – Jan 2026</span>
                 <a href="https://cinquenetwork.odoo.com/home" target="_blank" rel="noopener noreferrer">
                     Company Website →
                 </a>
             </div>
     
             <ul>
-                <li>
-                    Improved WebRTC connection reliability by optimizing signaling servers using
-                    Node.js, Socket.IO, and Redis
-                </li>
-                <li>
-                    Configured NGINX with SSL/TLS for secure WebSocket (WSS) communication
-                </li>
-                <li>
-                    Implemented fault-tolerant session handling using Redis for distributed systems
-                </li>
-                <li>
-                    Containerized backend services using Docker for scalable deployment across environments
-                </li>
+                <li>Built high-uptime WebRTC signaling infrastructure using Redis Publish/Subscribe, ensuring low-latency data transmission</li>
+                <li>Designed fault-tolerant distributed session management with Redis to maintain consistent user states across servers</li>
+                <li>Configured NGINX reverse proxy with SSL/TLS to secure WebSocket traffic and optimize load balancing</li>
+                <li>Dockerized microservices to unify development and production environments, significantly reducing deployment friction</li>
+                <li>Delivered complex real-time communication features in Agile sprints, actively collaborating with cross-functional teams</li>
             </ul>
         </div>
     </section>
 
-
-
     <!-- Skills Section -->
     <section id="skills">
         <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-tag">C</div>
-            <div class="skill-tag">C++</div>
-            <div class="skill-tag">JavaScript</div>
-            <div class="skill-tag">HTML</div>
-            <div class="skill-tag">CSS</div>
-            <div class="skill-tag">Node.js</div>
-            <div class="skill-tag">Express.js</div>
-            <div class="skill-tag">Socket.IO</div>
-            <div class="skill-tag">MongoDB</div>
-            <div class="skill-tag">MySQL</div>
-            <div class="skill-tag">Redis</div>
-            <div class="skill-tag">NGINX</div>
-            <div class="skill-tag">SSL/TLS</div>
-            <div class="skill-tag">PM2</div>
-            <div class="skill-tag">Docker</div>
-            <div class="skill-tag">AWS</div>
-            <div class="skill-tag">Data Structures</div>
-            <div class="skill-tag">Algorithms</div>
-            <div class="skill-tag">OOP</div>
+        
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Programming Languages</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">C</div>
+                <div class="skill-tag">C++</div>
+                <div class="skill-tag">JavaScript</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Backend Frameworks</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">Express.js</div>
+                <div class="skill-tag">FastAPI</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Real-time Technologies</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Socket.IO</div>
+                <div class="skill-tag">WebRTC</div>
+                <div class="skill-tag">WebSocket (WSS)</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Database Systems</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">MySQL</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Redis (Caching & Pub/Sub)</div>
+                <div class="skill-tag">Amazon S3</div>
+                <div class="skill-tag">Amazon DocumentDB</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">DevOps & Cloud</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Docker</div>
+                <div class="skill-tag">NGINX Reverse Proxy</div>
+                <div class="skill-tag">AWS (EC2, S3)</div>
+                <div class="skill-tag">Linux Administration</div>
+                <div class="skill-tag">PM2 Process Manager</div>
+                <div class="skill-tag">Serverless Framework</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Security & Authentication</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">SSL/TLS</div>
+                <div class="skill-tag">JWT</div>
+                <div class="skill-tag">OAuth 2.0</div>
+                <div class="skill-tag">OTP</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Development Practices</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">RESTful API</div>
+                <div class="skill-tag">Git/GitHub</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.2rem;">Computer Science Fundamentals</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Data Structures</div>
+                <div class="skill-tag">Algorithms</div>
+                <div class="skill-tag">OOP</div>
+                <div class="skill-tag">DBMS</div>
+                <div class="skill-tag">Computer Networks</div>
+                <div class="skill-tag">Blockchain</div>
+            </div>
         </div>
     </section>
 
@@ -802,18 +236,23 @@
             <div class="project-card">
                 <div class="project-header">
                     <h3>Blockchain-Based E-Voting System</h3>
-                    <p class="project-tech">Blockchain · Secure Systems · Distributed Architecture</p>
+                    <p class="project-tech">Go (Golang) · Ethereum (Layer 1) · Polygon (Layer 2) · Amazon DocumentDB · AWS (EC2, S3) · NGINX · SSL/TLS</p>
                 </div>
                 <div class="project-body">
                     <ul>
-                        <li>Designed a secure and transparent electronic voting system using blockchain principles</li>
-                        <li>Ensured immutability, tamper resistance, and vote verifiability through cryptographic techniques</li>
-                        <li>Improved trust, security, and auditability in digital elections with distributed consensus</li>
+                        <li>Engineered a Dual-Chain decentralized voting platform using Polygon (Layer 2) for high-throughput execution and Ethereum (Layer 1) for immutable result anchoring</li>
+                        <li>Developed Role-Based Access Control, OTP verification, and live dashboards for secure and real-time election monitoring</li>
+                        <li>Integrated Amazon S3 for secure media storage and deployed on AWS EC2 with NGINX for high-availability access</li>
+                        <li>Implemented a centralized Audit Trail in Amazon DocumentDB with periodic hashing to guarantee system-wide integrity</li>
+                        <li>Automated blockchain vote tallying and persistent archival on Ethereum to deliver instant, immutable election results</li>
                     </ul>
                 </div>
                 <div class="project-footer">
                     <a href="https://github.com/HarshitTripathi3008/Blockchain-Based-E-voting-system" target="_blank">
-                        View Repository →
+                        GitHub Repository →
+                    </a>
+                    <a href="https://blockvotes.in" target="_blank">
+                        Live Demo →
                     </a>
                 </div>
             </div>
@@ -824,57 +263,44 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3>Real-Time Chat Server</h3>
-                    <p class="project-tech">Socket.IO · Node.js · Redis · NGINX · SSL · PM2</p>
+                    <h3>Varta - Real-time Chat Application</h3>
+                    <p class="project-tech">Node.js · Socket.IO · WebRTC · Redis Pub/Sub · MongoDB · Express.js · Cloudinary · Google OAuth 2.0 · Amazon EC2 · NGINX · PM2</p>
                 </div>
                 <div class="project-body">
                     <ul>
-                        <li>Developed distributed and scalable chat backend using Redis Pub/Sub</li>
-                        <li>Deployed behind NGINX reverse proxy with SSL for secure communication</li>
-                        <li>Implemented real-time messaging with horizontal scalability</li>
+                        <li>Developed a scalable chat platform supporting real-time messaging and peer-to-peer Audio/Video calling via Socket.IO</li>
+                        <li>Integrated Google OAuth 2.0 for security, MongoDB for persistent sessions, and Cloudinary for efficient media handling</li>
+                        <li>Deployed on AWS EC2 using NGINX for SSL termination and PM2 for process monitoring and high availability</li>
                     </ul>
                 </div>
                 <div class="project-footer">
                     <a href="https://github.com/HarshitTripathi3008/chat_website" target="_blank">
-                        View Repository →
+                        GitHub Repository →
+                    </a>
+                    <a href="https://vartaweb.in" target="_blank">
+                        Live Demo →
                     </a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3>Todo List Application</h3>
-                    <p class="project-tech">Node.js · Express.js · MongoDB · NGINX</p>
+                    <h3>AI-Powered Resume Matching Platform</h3>
+                    <p class="project-tech">Node.js · Python · FastAPI · Serverless Framework · AWS (Lambda, S3, API Gateway) · MongoDB · Generative AI</p>
                 </div>
                 <div class="project-body">
                     <ul>
-                        <li>Built RESTful CRUD APIs with MongoDB integration</li>
-                        <li>Secured deployment using SSL and PM2 process manager</li>
-                        <li>Implemented user authentication and data validation</li>
+                        <li>Architected an AI-driven resume matching system using Google Generative AI for intelligent parsing and analysis</li>
+                        <li>Developed serverless RESTful APIs using Node.js, Python FastAPI, and Serverless Framework, deploying microservices on AWS Lambda</li>
+                        <li>Secured sensitive data with Amazon S3, JSON Web Token authentication, and MongoDB for scalable persistence</li>
                     </ul>
                 </div>
                 <div class="project-footer">
-                    <a href="https://github.com/HarshitTripathi3008/node-mongodb-todo" target="_blank">
-                        View Repository →
+                    <a href="https://github.com/HarshitTripathi3008/LLM-Based-Resume-Matching-Platform" target="_blank">
+                        GitHub Repository →
                     </a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Railway Reservation System</h3>
-                    <p class="project-tech">HTML · CSS · JavaScript · Node.js · MySQL</p>
-                </div>
-                <div class="project-body">
-                    <ul>
-                        <li>Responsive UI with real-time form validation</li>
-                        <li>Backend booking, scheduling, and admin features</li>
-                        <li>Database design for complex reservation logic</li>
-                    </ul>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/HarshitTripathi3008/Railway-reservation-system" target="_blank">
-                        View Repository →
+                    <a href="https://resume-platform-frontend.onrender.com/" target="_blank">
+                        Live Demo →
                     </a>
                 </div>
             </div>
@@ -887,27 +313,9 @@
         <div class="card">
             <h3>B.Tech in Computer Science and Engineering</h3>
             <div class="meta">
-                <span>Institute of Engineering and Rural Technology, AKTU</span>
+                <span>Institute of Engineering and Rural Technology (Dr. A.P.J. Abdul Kalam Technical University)</span>
                 <span>•</span>
-                <span>Nov 2022 – Jul 2026</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>Intermediate</h3>
-            <div class="meta">
-                <span>Gujarat Public School</span>
-                <span>•</span>
-                <span>Apr 2021 – Jul 2022</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>High School</h3>
-            <div class="meta">
-                <span>Gujarat Public School</span>
-                <span>•</span>
-                <span>Apr 2019 – Jun 2020</span>
+                <span>Expected 2026</span>
             </div>
         </div>
 
@@ -924,18 +332,18 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2>Get In Touch</h2>
-        <div style="background: var(--bg-secondary); border-radius: 24px; padding: 4rem 2rem; text-align: center; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <div style="background: var(--bg-secondary); border-radius: 24px; padding: 4rem 2rem; text-align: center; border: 1px solid rgba(13, 196, 242, 0.2); backdrop-filter: blur(10px);">
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="icon">✉</div>
+                    <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                     <a href="mailto:harshtripathi9559@gmail.com">harshtripathi9559@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <div class="icon">📞</div>
+                    <div class="icon"><span class="material-symbols-outlined">call</span></div>
                     <a href="tel:+917905002968">+91-7905002968</a>
                 </div>
                 <div class="contact-item">
-                    <div class="icon">🔗</div>
+                    <div class="icon"><span class="material-symbols-outlined">link</span></div>
                     <a href="https://www.linkedin.com/in/harshit-tripathi-474577259" target="_blank">LinkedIn Profile</a>
                 </div>
             </div>
@@ -944,121 +352,13 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Harshit Tripathi. All rights reserved.</p>
+        <p>&copy; 2026 Harshit Tripathi. All rights reserved.</p>
         <p style="font-size: 0.9rem;">Built with passion for technology and innovation</p>
     </footer>
 
     <!-- Back to Top Button -->
     <button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close mobile menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Back to Top Button
-        const backToTopBtn = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = 'flex';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80;
-                    const targetPosition = target.offsetTop - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections and cards
-        document.querySelectorAll('section, .card, .project-card, .stat-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.style.color = '';
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.style.color = 'var(--primary-color)';
-                }
-            });
-        });
-
-        // Console message
-        console.log('%c👋 Hello Developer!', 'font-size: 20px; color: #38bdf8; font-weight: bold;');
-        console.log('%cInterested in the code? Visit my GitHub!', 'font-size: 14px; color: #94a3b8;');
-        console.log('%chttps://github.com/HarshitTripathi3008', 'font-size: 12px; color: #0ea5e9;');
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
